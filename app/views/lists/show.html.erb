@@ -1,0 +1,27 @@
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-10">
+
+      <h2 class="mb-4">
+        <em>Nom de ma Liste :</em> <%= @list.name %>
+      </h2>
+
+      <h4>Liste des films</h4>
+
+      <ul class="list-group mb-4">
+        <% @list.bookmarks.each do |bookmark| %>
+          <li class="list-group-item">
+            <strong><%= bookmark.movie.title %></strong><br>
+            <small class="text-muted"><%= bookmark.movie.overview %></small><br>
+            <span>🎬 Note : <%= bookmark.movie.rating %></span><br>
+            <span>📝 Commentaire : <%= bookmark.comment %></span>
+          </li>
+        <% end %>
+      </ul>
+
+      <%= link_to "⬅ Back to all lists", lists_path, class: 'btn btn-outline-primary me-2' %>
+      <%= link_to "➕ Add a movie", new_list_bookmark_path(@list), class: 'btn btn-primary' %>
+
+    </div>
+  </div>
+</div>
